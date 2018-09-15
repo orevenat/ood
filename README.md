@@ -5,7 +5,8 @@
 
 ```PHP
 $ip = "188.186.18.255";
-$location = Location::getLocationData($ip);
+$location = new Location;
+$location->getLocationData($ip)
 ```
 
-Return  Illuminate\Support\Collection instance.
+Return array.
