@@ -1,11 +1,11 @@
 {
-  "name": "hexlet/php-package",
-  "bin": ["bin/php-package"],
+  "name": "orevenat/php-ood",
+  "bin": ["bin/php-ood"],
   "type": "library",
   "authors": [
     {
-      "name": "Kirill Mokevnin",
-      "email": "mokevnin@gmail.com"
+      "name": "Ruslan Knyazev",
+      "email": "agrry@yandex.ru"
     }
   ],
   "scripts": {
@@ -16,8 +16,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Php\\Package\\": "src",
-      "Php\\Package\\Tests\\": "tests"
+      "Php\\Ood\\": "src",
+      "Php\\Ood\\Tests\\": "tests"
     }
   },
   "require": {
