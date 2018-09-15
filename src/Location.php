@@ -3,6 +3,7 @@
 namespace Php\Ood;
 
 use Illuminate\Support\Collection;
+use GuzzleHttp\Client;
 
 class Location
 {
@@ -17,13 +18,12 @@ class Location
 
     public function setLocation()
     {
-        $ch = curl_init();
+        $client = new Client();
         $url = "http://ip-api.com/json/" . $this->ip;
 
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        $this->data = collect(json_decode(curl_exec($ch)));
-        curl_close($ch);
+        $res = $client->request('GET', $url);
+
+        $this->data = collect(json_decode($res->getBody()));
     }
 
     public static function getLocationData($ip)
