@@ -10,7 +10,7 @@ class Location
 
     public function __construct($client = null)
     {
-        $this->client = !isset($client) ? new Client() : $client;
+        $this->client = $client ?? new Client();
     }
 
     public function getLocationData($ip)

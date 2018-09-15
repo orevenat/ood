@@ -4,6 +4,8 @@ namespace Php\Ood\Tests;
 
 use \PHPUnit\Framework\TestCase;
 use \Php\Ood\Location;
+use \GuzzleHttp\ClientInterface;
+use \Psr\Http\Message\ResponseInterface;
 
 class LocationTest extends TestCase
 {
@@ -27,8 +29,22 @@ class LocationTest extends TestCase
         ];
 
         $ip = "188.186.18.255";
-        $location = new Location();
+
+        $location = new Location($this->createStub($data));
 
         $this->assertEquals($data, $location->getLocationData($ip));
+    }
+
+    public function createStub($default)
+    {
+        $bodyStub = $this->createMock(ResponseInterface::class);
+        $bodyStub->method('getBody')
+             ->willReturn(json_encode($default));
+
+        $requestStub = $this->createMock(ClientInterface::class);
+        $requestStub->method('request')
+             ->willReturn($bodyStub);
+
+        return $requestStub;
     }
 }
