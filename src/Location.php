@@ -2,40 +2,28 @@
 
 namespace Php\Ood;
 
-use Illuminate\Support\Collection;
 use GuzzleHttp\Client;
 
 class Location
 {
-    private $ip;
     private $data;
+    private $client;
 
-    public function __construct($ip)
+    public function __construct($client = null)
     {
-        $this->ip = $ip;
-        $this->setLocation();
+        if (!isset($client)) {
+            $this->client = new Client();
+        } else {
+            $this->client = $client;
+        }
     }
 
-    public function setLocation()
+    public function getLocationData($ip)
     {
-        $client = new Client();
-        $url = "http://ip-api.com/json/" . $this->ip;
+        $url = "http://ip-api.com/json/" . $ip;
+        $res = $this->client->request('GET', $url);
+        $this->data = json_decode($res->getBody(), true);
 
-        $res = $client->request('GET', $url);
-
-        $this->data = collect(json_decode($res->getBody()));
-    }
-
-    public static function getLocationData($ip)
-    {
-        $location = new Location($ip);
-        $location->setLocation();
-
-        return $location->getLocation();
-    }
-
-    public function getLocation()
-    {
         return $this->data;
     }
 }

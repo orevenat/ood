@@ -2,7 +2,6 @@
 
 namespace Php\Ood\Tests;
 
-use \Illuminate\Support\Collection;
 use \PHPUnit\Framework\TestCase;
 use \Php\Ood\Location;
 
@@ -28,8 +27,8 @@ class LocationTest extends TestCase
         ];
 
         $ip = "188.186.18.255";
-        $location = Location::getLocationData($ip);
+        $location = new Location();
 
-        $this->assertEquals(collect($data), $location);
+        $this->assertEquals($data, $location->getLocationData($ip));
     }
 }

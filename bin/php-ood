@@ -13,6 +13,6 @@ if (file_exists($autoloadPath1)) {
 echo 'Put your ip?: ';
 $ip = trim(fgets(STDIN));
 
-$location = Php\Ood\Location::getLocationData($ip);
+$location = new Php\Ood\Location;
 
-var_dump($location->toArray());
+var_dump($location->getLocationData($ip));
