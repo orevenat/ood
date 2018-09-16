@@ -20,4 +20,4 @@ bin/weather London
 bin/weather --service=SecondService London
 ```
 
-Return array.
+Return temp and wind speed.
