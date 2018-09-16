@@ -3,12 +3,14 @@
 namespace Php\Ood\Tests;
 
 use \PHPUnit\Framework\TestCase;
-use \Php\Ood\Location;
+use \Php\Ood\Weather;
 use \GuzzleHttp\ClientInterface;
+use \GuzzleHttp\Client;
 use \Psr\Http\Message\ResponseInterface;
 
-class LocationTest extends TestCase
+class WeatherTest extends TestCase
 {
+
     public function testGetLocation()
     {
         $data = [

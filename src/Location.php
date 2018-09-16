@@ -16,7 +16,7 @@ class Location
     public function getLocationData($ip)
     {
         $url = "http://ip-api.com/json/" . $ip;
-        $res = $this->client->request('GET', $url);
+        $res = $this->client->get($url);
         $data = json_decode($res->getBody(), true);
 
         return $data;
