@@ -1,6 +1,10 @@
 {
   "name": "orevenat/php-ood",
-  "bin": ["bin/php-ood"],
+  "description": "hexlet workshop",
+  "bin": [
+    "bin/php-ood",
+    "bin/weather"
+  ],
   "type": "library",
   "authors": [
     {
