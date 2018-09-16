@@ -12,10 +12,10 @@ class Weather
         'SecondService' => SecondService::class
     ];
 
-    public function __construct($customService = null, $client = null)
+    public function __construct($customService = [], $client = null)
     {
-        if ($customService) {
-            $this->services[] = $customService;
+        if (!empty($customService)) {
+            $this->services = array_merge($this->services, $customService);
         }
 
         $this->client = $client ?? new Client();

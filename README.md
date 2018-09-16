@@ -14,7 +14,14 @@ Return array.
 
 ### Usage Instructions
 
-Пример использования
+Пример использования:
+```PHP
+$customService = ['CustomService' => CustomClass::class];
+$weather = new Weather($customService);
+$info = $weather->getTownWheather('London', 'CustomService');
+```
+
+Пример использования CLI
 ```PHP
 bin/weather London
 bin/weather --service=SecondService London
